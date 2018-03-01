@@ -6,3 +6,7 @@ ModernJS:
     - async: we don't know when
 
 Proto: flyweight pattern
+
+Future:
+Parcel, Rust, WebAssembly
+
