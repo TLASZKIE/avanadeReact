@@ -1,2 +1,8 @@
 https://tomusdrw.github.io/react-redux/
 
+ModernJS:
+  - script refer/async/null
+    - refer: in order but at the end
+    - async: we don't know when
+
+   
