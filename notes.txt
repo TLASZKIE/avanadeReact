@@ -5,4 +5,4 @@ ModernJS:
     - refer: in order but at the end
     - async: we don't know when
 
-   
+Proto: flyweight pattern
