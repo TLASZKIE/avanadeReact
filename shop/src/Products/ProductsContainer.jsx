@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import ProductsList from './ProductsList'
+import Cart from './Cart'
 
 export default class ProductsContainer extends Component {
   state = {
     products: [],
+    buyedProducts: [],
     sorting: 'asc',
     filter: ''
   }
@@ -23,8 +25,19 @@ export default class ProductsContainer extends Component {
     this.setState({ filter: newFilter })
   }
 
+  onBuy = product => {
+    this.setState({
+      buyedProducts: [...new Set([...this.state.buyedProducts, product])]
+    })
+  }
+
+  onClear = () => {
+    this.setState({
+      buyedProducts: []
+    })
+  }
   render() {
-    const { products, sorting, filter } = this.state
+    const { products, sorting, filter, buyedProducts } = this.state
 
     const filteredProducts =
       filter === ''
@@ -48,7 +61,8 @@ export default class ProductsContainer extends Component {
           placeholder="Search list..."
           onChange={ev => this.onSearchingChange(ev.target.value)}
         />
-        <ProductsList products={sortedProducts} />
+        <Cart {...{ buyedProducts }} onClear={this.onClear} />
+        <ProductsList products={sortedProducts} onBuy={this.onBuy} />
       </div>
     )
   }

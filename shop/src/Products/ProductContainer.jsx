@@ -3,10 +3,14 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 
 export default class ProductContainer extends Component {
-  state = { toggle: false }
+  state = { toggle: false, buyed: false }
 
-  handleClick = () => {
+  handleToggle = () => {
     this.setState(prev => ({ toggle: !prev.toggle }))
+  }
+
+  handleBuy = () => {
+    this.props.onBuy(this.props.product)
   }
 
   render() {
@@ -14,7 +18,8 @@ export default class ProductContainer extends Component {
       <Product
         {...this.props.product}
         toggle={this.state.toggle}
-        onToggle={this.handleClick}
+        onToggle={this.handleToggle}
+        onBuy={this.handleBuy}
       />
     )
   }
