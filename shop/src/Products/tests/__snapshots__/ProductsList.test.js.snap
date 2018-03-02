@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="products-panel"
+  >
+    <h1>
+      Special offer
+    </h1>
+    <div
+      className="products-product special"
+    >
+      <img
+        alt="name"
+        height="100"
+        onClick={[Function]}
+        src={undefined}
+        width="100"
+      />
+      <div>
+        name
+      </div>
+      <div>
+        1600
+      </div>
+    </div>
+  </div>
+  <div
+    className="products-panel"
+  >
+    <h1>
+      Products
+    </h1>
+  </div>
+</div>
+`;
