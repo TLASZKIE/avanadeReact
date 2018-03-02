@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ProductsList from './ProductsList'
 import Cart from './Cart'
 
@@ -10,8 +11,16 @@ export default class ProductsContainer extends Component {
     filter: ''
   }
 
+  static contextTypes = {
+    url: PropTypes.string.isRequired
+  }
+
   componentDidMount() {
-    fetch('data/products.json')
+    const url = this.context.url
+
+    console.log('url: ', url)
+    // fetch('data/products.json')
+    fetch(url)
       .then(res => res.json())
       .then(products => this.setState({ products }))
   }
@@ -48,9 +57,6 @@ export default class ProductsContainer extends Component {
       sorting === 'asc'
         ? filteredProducts.concat().sort((a, b) => a.price < b.price)
         : filteredProducts.concat().sort((a, b) => a.price > b.price)
-
-    console.log(sorting)
-    console.log(sortedProducts)
 
     return (
       <div className="ProductsContainer">
