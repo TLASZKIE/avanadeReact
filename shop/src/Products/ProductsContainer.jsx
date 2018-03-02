@@ -11,12 +11,13 @@ export default class ProductsContainer extends Component {
     filter: ''
   }
 
-  static contextTypes = {
-    url: PropTypes.string.isRequired
-  }
+  // static contextTypes = {
+  //   url: PropTypes.string.isRequired
+  // }
 
   componentDidMount() {
-    const url = this.context.url
+    // const url = this.context.url
+    const url = this.props.url
 
     console.log('url: ', url)
     // fetch('data/products.json')
@@ -71,9 +72,5 @@ export default class ProductsContainer extends Component {
         <ProductsList products={sortedProducts} onBuy={this.onBuy} />
       </div>
     )
-  }
-
-  compare(a, b) {
-    return a - b
   }
 }

@@ -3,6 +3,8 @@ import logo from './logo.svg'
 import './App.css'
 import ProductsContainer from './Products/ProductsContainer'
 import UrlProvider from './UrlProvider'
+import ProductsContainerWithUrl from './Products/ProductsContainerWithUrl'
+import PropTypes from 'prop-types'
 
 class App extends Component {
   render() {
@@ -13,11 +15,10 @@ class App extends Component {
           <h1 className="App-title">My shop</h1>
         </header>
         <UrlProvider url="data/products.json">
-          <ProductsContainer />
+          <ProductsContainerWithUrl />
         </UrlProvider>
       </div>
     )
   }
 }
-
 export default App
