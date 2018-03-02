@@ -10,7 +10,7 @@ export default class UrlProvider extends React.Component {
   //4/ ... and what kind of props we expect
   static propTypes = {
     url: PropTypes.string.isRequired,
-    children: PropTypes.element.isRequired
+    children: PropTypes.array
   }
 
   //5/ This function will be called to retrieve the context.

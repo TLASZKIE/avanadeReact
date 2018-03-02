@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { HashRouter, Route, Switch, NavLink } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
-import ProductsContainer from './Products/ProductsContainer'
 import UrlProvider from './UrlProvider'
 import ProductsContainerWithUrl from './Products/ProductsContainerWithUrl'
-import PropTypes from 'prop-types'
+import Contact from './Contact'
+import Footer from './Footer'
 
 class App extends Component {
   render() {
@@ -15,7 +16,21 @@ class App extends Component {
           <h1 className="App-title">My shop</h1>
         </header>
         <UrlProvider url="data/products.json">
-          <ProductsContainerWithUrl />
+          <HashRouter>
+            <React.Fragment>
+              <NavLink exact to="/">
+                <button>List</button>
+              </NavLink>
+              <NavLink to="/contact">
+                <button>Contact</button>
+              </NavLink>
+              <Switch>
+                <Route exact path="/" component={ProductsContainerWithUrl} />
+                <Route path="/contact" component={Contact} />
+              </Switch>
+              <Footer />
+            </React.Fragment>
+          </HashRouter>
         </UrlProvider>
       </div>
     )
