@@ -19,12 +19,17 @@ export default class ProductsContainer extends Component {
       ? this.setState({ sorting: 'desc' })
       : this.setState({ sorting: 'asc' })
   }
+  onSearchingChange = newFilter => {
+    this.setState({ filter: newFilter })
+  }
 
   render() {
     const { products, sorting, filter } = this.state
 
     const filteredProducts =
-      filter === '' ? products : products.filter(p => p.name.includes(filter))
+      filter === ''
+        ? products
+        : products.filter(p => p.name.toLowerCase().indexOf(filter) !== -1)
 
     const sortedProducts =
       sorting === 'asc'
@@ -37,6 +42,12 @@ export default class ProductsContainer extends Component {
     return (
       <div className="ProductsContainer">
         <button onClick={this.handleSort}>{sorting}</button>
+        <input
+          type="text"
+          value={filter}
+          placeholder="Search list..."
+          onChange={ev => this.onSearchingChange(ev.target.value)}
+        />
         <ProductsList products={sortedProducts} />
       </div>
     )
