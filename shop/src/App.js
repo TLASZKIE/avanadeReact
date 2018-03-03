@@ -9,7 +9,6 @@ import Footer from './Footer'
 import { connect } from 'react-redux'
 import actionCreators from './store/actionCreators'
 import { bindActions } from './store/actionCreators'
-import store from './store/store.js'
 
 export class App extends Component {
   componentDidMount() {
