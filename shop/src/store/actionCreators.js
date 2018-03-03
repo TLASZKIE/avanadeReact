@@ -37,18 +37,18 @@ const actionCreators = createActionCreators(Actions)
 //   dispatch(actionCreators.fetchProducts())
 // }
 
-actionCreators.removeProduct = id => dispatch => {
-  const body = JSON.stringify(id)
-  console.log(body)
+// actionCreators.removeProduct = id => dispatch => {
+//   const body = JSON.stringify(id)
+//   console.log(body)
 
-  fetch('http://derpy.todr.me:8000/api/products/' + id, {
-    method: 'delete'
-  })
-    .then(res => res.json())
-    .then(res => console.log(res))
+//   fetch('http://derpy.todr.me:8000/api/products/' + id, {
+//     method: 'delete'
+//   })
+//     .then(res => res.json())
+//     .then(res => console.log(res))
 
-  dispatch(actionCreators.fetchProducts())
-}
+//   dispatch(actionCreators.fetchProducts())
+// }
 
 export default actionCreators
 

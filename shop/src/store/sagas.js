@@ -25,12 +25,16 @@ export function* removeSaga() {
 }
 
 function* runRemoveSaga(action) {
-  // yield put(actionCreators.fetchProductsStarted())
-  // const products = yield call(
-  //   fetchProducts,
-  //   'http://derpy.todr.me:8000/api/products'
-  // )
-  // yield put(actionCreators.fetchProductsSuccess(products))
+  const products = yield call(removeProduct, action.payload)
+  yield put(actionCreators.fetchProducts())
+}
+
+function removeProduct(id) {
+  return fetch('http://derpy.todr.me:8000/api/products/' + id, {
+    method: 'delete'
+  })
+    .then(res => res.json())
+    .then(res => console.log(res))
 }
 
 // actionCreators.removeProduct = id => dispatch => {

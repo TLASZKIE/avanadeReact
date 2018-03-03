@@ -3,7 +3,7 @@ import createSocketIoMiddleware from 'redux-socket.io'
 import io from 'socket.io-client'
 import createSagaMiddleware from 'redux-saga'
 import * as Actions from './actions'
-import { fetchSaga } from './sagas'
+import { fetchSaga, removeSaga } from './sagas'
 
 const socket = io('ws://derpy.todr.me:8000')
 const socketIoMiddleware = createSocketIoMiddleware(socket, 'SERVER/')
@@ -73,6 +73,7 @@ export default applyMiddleware(
 )
 
 sagaMiddleware.run(fetchSaga)
+sagaMiddleware.run(removeSaga)
 
 //8/ This helper function will allow us to create reducers.
 function createReducer(initialState, clazz) {
