@@ -1,0 +1,5 @@
+export const fetchProductsStarted = 'PRODUCTS_FETCH_STARTED'
+export const fetchProductsSuccess = 'PRODUCTS_FETCH_SUCCESS'
+export const fetchProductsFailure = 'PRODUCTS_FETCH_FAILURE'
+export const addProductToCart = 'PRODUCTS_ADD_TO_CART'
+export const clearCart = 'PRODUCTS_CLEAR_CART'

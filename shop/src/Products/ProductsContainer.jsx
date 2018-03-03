@@ -5,25 +5,8 @@ import Cart from './Cart'
 
 export default class ProductsContainer extends Component {
   state = {
-    products: [],
-    buyedProducts: [],
     sorting: 'asc',
     filter: ''
-  }
-
-  // static contextTypes = {
-  //   url: PropTypes.string.isRequired
-  // }
-
-  componentDidMount() {
-    // const url = this.context.url
-    const url = this.props.url
-
-    console.log('url: ', url)
-    // fetch('data/products.json')
-    fetch(url)
-      .then(res => res.json())
-      .then(products => this.setState({ products }))
   }
 
   handleSort = () => {
@@ -36,18 +19,18 @@ export default class ProductsContainer extends Component {
   }
 
   onBuy = product => {
-    this.setState({
-      buyedProducts: [...new Set([...this.state.buyedProducts, product])]
-    })
+    this.props.addProductToCart(product)
+    // this.setState({
+    //   buyedProducts: [...new Set([...this.state.buyedProducts, product])]
+    // })
   }
 
   onClear = () => {
-    this.setState({
-      buyedProducts: []
-    })
+    this.props.clearCart()
   }
   render() {
-    const { products, sorting, filter, buyedProducts } = this.state
+    const { sorting, filter } = this.state
+    const { products, fetching, buyedProducts } = this.props
 
     const filteredProducts =
       filter === ''
@@ -61,15 +44,21 @@ export default class ProductsContainer extends Component {
 
     return (
       <div className="ProductsContainer">
-        <button onClick={this.handleSort}>{sorting}</button>
-        <input
-          type="text"
-          value={filter}
-          placeholder="Search list..."
-          onChange={ev => this.onSearchingChange(ev.target.value)}
-        />
-        <Cart {...{ buyedProducts }} onClear={this.onClear} />
-        <ProductsList products={sortedProducts} onBuy={this.onBuy} />
+        {fetching ? (
+          <div>Loading...</div>
+        ) : (
+          <div>
+            <button onClick={this.handleSort}>{sorting}</button>
+            <input
+              type="text"
+              value={filter}
+              placeholder="Search list..."
+              onChange={ev => this.onSearchingChange(ev.target.value)}
+            />
+            <Cart {...{ buyedProducts }} onClear={this.onClear} />
+            <ProductsList products={sortedProducts} onBuy={this.onBuy} />
+          </div>
+        )}
       </div>
     )
   }
