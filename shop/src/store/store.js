@@ -19,11 +19,11 @@ const productsReducer = createReducer(
         products: [...state.products, ...action.payload]
       })
     },
-    [Actions.addNewProduct](state, action) {
-      return Object.assign({}, state, {
-        products: [...state.products, action.payload]
-      })
-    },
+    // [Actions.addNewProduct](state, action) {
+    //   return Object.assign({}, state, {
+    //     products: [...state.products, action.payload]
+    //   })
+    // },
     [Actions.addProductToCart](state, action) {
       return Object.assign({}, state, {
         buyedProducts: [...new Set([...state.buyedProducts, action.payload])]

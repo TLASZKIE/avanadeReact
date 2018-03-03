@@ -4,8 +4,8 @@ import ProductsPanel from './ProductsPanel'
 
 const ProductsList = props => {
   const { onBuy } = props
-  const specialProduct = props.products.filter(p => p.specialOffer)
-  const normalProduct = props.products.filter(p => !p.specialOffer)
+  const specialProduct = props.products.filter(p => p.isSpecial)
+  const normalProduct = props.products.filter(p => !p.isSpecial)
 
   return (
     <div>

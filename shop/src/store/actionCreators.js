@@ -7,7 +7,8 @@ const actionCreators = createActionCreators(Actions)
 actionCreators.fetchProducts = () => dispatch => {
   dispatch(actionCreators.fetchProductsStarted())
 
-  fetch('data/products.json').then(
+  // fetch('data/products.json').then(
+  fetch('http://derpy.todr.me:8000/api/products').then(
     products =>
       products
         .json()
@@ -16,6 +17,24 @@ actionCreators.fetchProducts = () => dispatch => {
         ),
     err => dispatch(actionCreators.fetchProductsFailure(err))
   )
+}
+
+actionCreators.addNewProduct = product => dispatch => {
+  const body = JSON.stringify(product)
+  console.log(body)
+
+  fetch('http://derpy.todr.me:8000/api/products', {
+    method: 'post',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+    body: body
+  })
+    .then(res => res.json())
+    .then(res => console.log(res))
+
+  dispatch(actionCreators.fetchProducts())
 }
 
 export default actionCreators

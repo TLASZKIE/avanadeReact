@@ -4,9 +4,9 @@
     "name": "ASUS Transformer T101",
     "img":
       "https://cdn.x-kom.pl/i/setup/images/prod/big/product-large,asus-transformer-t101ha-x5-z83504gb128gbwin10-343613,pr_2017_1_13_9_9_8_615.jpg",
-    "desc":
+    "description":
       "Płynną pracę urządzenia zapewnia wydajny czterordzeniowy procesor Intel Atom x5-Z8350 o taktowaniu 4 x 1.44GHz. Tablet z procesorem firmy Intel umożliwia szybsze przeglądanie ulubionych stron, prostą edycję zdjęć, szybsze przesyłanie strumieniowe filmów internetowych oraz wysyłanie wpisów w serwisach społecznościowych w podróży. Wszystko to umożliwia tablet z procesorem Intel®.",
-    "specialOffer": true,
+    "isSpecial": true,
     "price": 1600
   },
   {
@@ -14,9 +14,9 @@
     "name": "Lenovo Legion Y520-15",
     "img":
       "https://cdn.x-kom.pl/i/setup/images/prod/big/product-big,lenovo-legion-y520-15-i5-7300hq8gb1281000-fhd-gtx1050-393211,pr_2017_3_7_13_37_26_896.jpg",
-    "desc":
+    "description":
       "Niespotykana moc i dynamika w połączeniu z wbudowanymi funkcjami zabezpieczeń gwarantuje najlepszą do potrzeb szybkość i płynność pracy, zabawy i tworzenia. Dodatkowo, dzięki obsłudze najwyższych rozdzielczości obrazu, procesory siódmej generacji zapewniają rozrywkę jak nigdy dotąd w domu czy w podróży. Procesory Intel® Core™ i5 siódmej generacji zapewniają wyjątkowo krótkie czasy rozruchu, niesamowitą rozrywkę i niespotykaną dynamikę przy jednoczesnej bezproblemowej obsłudze i gwarancji dużych szybkości.",
-    "specialOffer": false,
+    "isSpecial": false,
     "price": 2200
   },
   {
@@ -24,9 +24,9 @@
     "name": "Dell Inspiron 5577",
     "img":
       "https://cdn.x-kom.pl/i/setup/images/prod/big/product-big,dell-inspiron-5577-i7-7700hq8g1281000win10-gtx1050-390097,2017/12/pr_2017_12_11_11_18_35_299_00.jpg",
-    "desc":
+    "description":
       "Maszyny do gier Inspiron 5577 Dell są zaprojektowane z myślą o specyficznych i wymagających potrzebach graczy. Zastosowanie najszybszych procesorów oraz potężnych kart graficznych sprawia, że każde doświadczenie w rozgrywce jest bardziej intensywne i rzeczywiste.",
-    "specialOffer": false,
+    "isSpecial": false,
     "price": 3600
   },
   {
@@ -34,9 +34,9 @@
     "name": "MSI GS63",
     "img":
       "https://cdn.x-kom.pl/i/setup/images/prod/big/product-big,msi-gs63-i7-7700hq16gb256win10-gtx1050-ips-383399,pr_2016_12_2_7_25_39_972.png",
-    "desc":
+    "description":
       "Karty graficzne z serii GeForce GTX 10 oparte są na architekturze Pascal, zapewniając nawet trzykrotnie wyższą wydajność w porównaniu do kart graficznych poprzedniej generacji, a także nowe, innowacyjne technologie gamingowe oraz niespotykane wrażenia w rzeczywistości wirtualnej. Ta nowa rodzina innowacyjnych kart graficznych stanowi krok milowy w dziedzinie wydajności i energooszczędności.",
-    "specialOffer": true,
+    "isSpecial": true,
     "price": 4200
   }
 ]

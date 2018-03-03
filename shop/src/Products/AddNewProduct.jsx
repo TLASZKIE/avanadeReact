@@ -35,13 +35,13 @@ export const AddNewProductForm = ({ onSubmit, initialMessage }) => (
   >
     {formApi => (
       <form onSubmit={formApi.submitForm}>
-        <Text field="id" placeholder="id" />
+        {/* <Text field="id" placeholder="id" /> */}
         <Text field="name" placeholder="name" />
-        <Text field="img" placeholder="img" />
-        <Text field="desc" placeholder="desc" />
+        {/* <Text field="img" placeholder="img" /> */}
+        <Text field="description" placeholder="description" />
         <Text field="price" placeholder="price" />
         <label>
-          specialOffer <Checkbox field="specialOffer" />
+          isSpecial <Checkbox field="isSpecial" />
         </label>
         <button disabled={!!formApi.errors}>Add</button>
         {formApi.errors && <p>{formApi.errors.message}</p>}
