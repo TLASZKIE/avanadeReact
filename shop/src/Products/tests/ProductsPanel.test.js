@@ -7,6 +7,6 @@ it('renders without crashing', () => {
   const div = document.createElement('div')
 
   const title = 'Title'
-  const products = [{ name: 'name', id: 1, specialOffer: true, price: 1600 }]
+  const products = [{ name: 'name', id: 1, isSpecial: true, price: 1600 }]
   ReactDOM.render(<ProductsPanel title={title} products={products} />, div)
 })

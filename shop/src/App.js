@@ -18,7 +18,12 @@ export class App extends Component {
 
   render() {
     const { products, fetching, buyedProducts } = this.props
-    const { addProductToCart, clearCart, addNewProduct } = this.props.actions
+    const {
+      addProductToCart,
+      clearCart,
+      addNewProduct,
+      removeProduct
+    } = this.props.actions
 
     return (
       <div className="App">
@@ -48,7 +53,8 @@ export class App extends Component {
                       fetching,
                       buyedProducts,
                       addProductToCart,
-                      clearCart
+                      clearCart,
+                      removeProduct
                     }}
                   />
                 )}

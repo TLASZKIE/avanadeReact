@@ -19,17 +19,35 @@ actionCreators.fetchProducts = () => dispatch => {
   )
 }
 
-actionCreators.addNewProduct = product => dispatch => {
-  const body = JSON.stringify(product)
+// actionCreators.addNewProduct = product => dispatch => {
+//   const body = JSON.stringify(product)
+//   console.log(body)
+
+//   fetch('http://derpy.todr.me:8000/api/products', {
+//     method: 'post',
+//     headers: {
+//       Accept: 'application/json, text/plain, */*',
+//       'Content-Type': 'application/json'
+//     },
+//     body: body
+//   })
+//     .then(res => res.json())
+//     .then(res => console.log(res))
+
+//   dispatch(actionCreators.fetchProducts())
+// }
+
+actionCreators.removeProduct = id => dispatch => {
+  const body = JSON.stringify(id)
   console.log(body)
 
-  fetch('http://derpy.todr.me:8000/api/products', {
-    method: 'post',
-    headers: {
-      Accept: 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    },
-    body: body
+  fetch('http://derpy.todr.me:8000/api/products/' + id, {
+    method: 'delete'
+    // headers: {
+    //   Accept: 'application/json, text/plain, */*',
+    //   'Content-Type': 'application/json'
+    // },
+    // body: body
   })
     .then(res => res.json())
     .then(res => console.log(res))
@@ -51,8 +69,7 @@ function createActionCreators(actions) {
   return Object.keys(actions).reduce((allActions, action) => {
     allActions[action] = payload => ({
       type: actions[action],
-      payload,
-      error: payload instanceof Error
+      payload
     })
     return allActions
   }, {})

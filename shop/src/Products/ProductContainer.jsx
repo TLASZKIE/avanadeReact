@@ -13,6 +13,10 @@ export default class ProductContainer extends Component {
     this.props.onBuy(this.props.product)
   }
 
+  handleRemove = () => {
+    this.props.onRemove(this.props.product.id)
+  }
+
   render() {
     return (
       <Product
@@ -20,6 +24,7 @@ export default class ProductContainer extends Component {
         toggle={this.state.toggle}
         onToggle={this.handleToggle}
         onBuy={this.handleBuy}
+        onRemove={this.handleRemove}
       />
     )
   }

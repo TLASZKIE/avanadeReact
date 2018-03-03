@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ProductsPanel from './ProductsPanel'
 
 const ProductsList = props => {
-  const { onBuy } = props
+  const { onBuy, onRemove } = props
   const specialProduct = props.products.filter(p => p.isSpecial)
   const normalProduct = props.products.filter(p => !p.isSpecial)
 
@@ -13,8 +13,14 @@ const ProductsList = props => {
         products={specialProduct}
         title="Special offer"
         onBuy={onBuy}
+        onRemove={onRemove}
       />
-      <ProductsPanel products={normalProduct} title="Products" onBuy={onBuy} />
+      <ProductsPanel
+        products={normalProduct}
+        title="Products"
+        onBuy={onBuy}
+        onRemove={onRemove}
+      />
     </div>
   )
 }

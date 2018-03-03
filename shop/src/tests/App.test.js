@@ -6,7 +6,7 @@ import App from '../App'
 it('renders without crashing', () => {
   const div = document.createElement('div')
 
-  // const products = [{ name: 'name', id: 1, specialOffer: true, price: 1600 }]
+  // const products = [{ name: 'name', id: 1, isSpecial: true, price: 1600 }]
   // fetch = jest.fn().mockReturnValue(Promise.resolve(products))
 
   // ReactDOM.render(<App />, div)

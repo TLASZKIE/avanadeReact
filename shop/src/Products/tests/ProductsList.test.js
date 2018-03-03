@@ -7,12 +7,12 @@ import renderer from 'react-test-renderer'
 it('renders without crashing', () => {
   const div = document.createElement('div')
 
-  const products = [{ name: 'name', id: 1, specialOffer: true, price: 1600 }]
+  const products = [{ name: 'name', id: 1, isSpecial: true, price: 1600 }]
   ReactDOM.render(<ProductsList products={products} />, div)
 })
 
 it('renders correctly', () => {
-  const products = [{ name: 'name', id: 1, specialOffer: true, price: 1600 }]
+  const products = [{ name: 'name', id: 1, isSpecial: true, price: 1600 }]
   const tree = renderer.create(<ProductsList products={products} />).toJSON()
 
   expect(tree).toMatchSnapshot()

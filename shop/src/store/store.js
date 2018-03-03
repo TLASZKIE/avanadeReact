@@ -1,5 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import * as Actions from './actions'
+import createSocketIoMiddleware from 'redux-socket.io'
+import io from 'socket.io-client'
+
+let socket = io('ws://derpy.todr.me:8000')
+let socketIoMiddleware = createSocketIoMiddleware(socket, 'SERVER/')
 
 const productsReducer = createReducer(
   {
@@ -16,14 +21,14 @@ const productsReducer = createReducer(
     [Actions.fetchProductsSuccess](state, action) {
       return Object.assign({}, state, {
         fetching: false,
-        products: [...state.products, ...action.payload]
+        products: action.payload
       })
     },
-    // [Actions.addNewProduct](state, action) {
-    //   return Object.assign({}, state, {
-    //     products: [...state.products, action.payload]
-    //   })
-    // },
+    [Actions.productChanged](state, action) {
+      return Object.assign({}, state, {
+        products: action.payload
+      })
+    },
     [Actions.addProductToCart](state, action) {
       return Object.assign({}, state, {
         buyedProducts: [...new Set([...state.buyedProducts, action.payload])]
@@ -56,7 +61,8 @@ export default applyMiddleware(
   store => next => action => {
     console.log(store.getState(), action)
     next(action)
-  }
+  },
+  socketIoMiddleware
 )(createStore)(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

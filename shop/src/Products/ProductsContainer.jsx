@@ -11,7 +11,7 @@ export default class ProductsContainer extends Component {
 
   handleSort = () => {
     this.state.sorting === 'asc'
-      ? this.setState({ sorting: 'desc' })
+      ? this.setState({ sorting: 'description' })
       : this.setState({ sorting: 'asc' })
   }
   onSearchingChange = newFilter => {
@@ -20,6 +20,10 @@ export default class ProductsContainer extends Component {
 
   onBuy = product => {
     this.props.addProductToCart(product)
+  }
+
+  onRemove = id => {
+    this.props.removeProduct(id)
   }
 
   onClear = () => {
@@ -53,7 +57,11 @@ export default class ProductsContainer extends Component {
               onChange={ev => this.onSearchingChange(ev.target.value)}
             />
             <Cart {...{ buyedProducts }} onClear={this.onClear} />
-            <ProductsList products={sortedProducts} onBuy={this.onBuy} />
+            <ProductsList
+              products={sortedProducts}
+              onBuy={this.onBuy}
+              onRemove={this.onRemove}
+            />
           </div>
         )}
       </div>

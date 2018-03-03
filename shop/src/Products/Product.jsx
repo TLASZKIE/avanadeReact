@@ -7,14 +7,15 @@ export default function Product(props) {
     img,
     name,
     price,
-    desc,
-    specialOffer,
+    description,
+    isSpecial,
     toggle,
     onToggle,
-    onBuy
+    onBuy,
+    onRemove
   } = props
 
-  const specialClass = specialOffer ? 'special' : ''
+  const specialClass = isSpecial ? 'special' : ''
 
   return (
     <div className={`products-product ${specialClass}`}>
@@ -23,7 +24,8 @@ export default function Product(props) {
       <div>{price}</div>
       <Link to={`/product/${id}`}>Details</Link>
       <button onClick={onBuy}>Buy</button>
-      {toggle ? <div>{desc}</div> : null}
+      <button onClick={onRemove}>Remove</button>
+      {toggle ? <div>{description}</div> : null}
     </div>
   )
 }
