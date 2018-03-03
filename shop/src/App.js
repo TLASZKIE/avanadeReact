@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch, NavLink } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
 import ProductsContainer from './Products/ProductsContainer'
+import AddNewProduct from './Products/AddNewProduct'
 import Contact from './Contact'
 import Footer from './Footer'
 
@@ -17,7 +18,7 @@ export class App extends Component {
 
   render() {
     const { products, fetching, buyedProducts } = this.props
-    const { addProductToCart, clearCart } = this.props.actions
+    const { addProductToCart, clearCart, addNewProduct } = this.props.actions
 
     return (
       <div className="App">
@@ -29,6 +30,9 @@ export class App extends Component {
           <React.Fragment>
             <NavLink exact to="/">
               <button>List</button>
+            </NavLink>
+            <NavLink to="/addProduct">
+              <button>Add Product</button>
             </NavLink>
             <NavLink to="/contact">
               <button>Contact</button>
@@ -48,7 +52,10 @@ export class App extends Component {
                     }}
                   />
                 )}
-                // component={ProductsContainer}
+              />
+              <Route
+                path="/addProduct"
+                render={() => <AddNewProduct addNewProduct={addNewProduct} />}
               />
               <Route path="/contact" component={Contact} />
             </Switch>

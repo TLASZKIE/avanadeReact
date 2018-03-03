@@ -20,9 +20,6 @@ export default class ProductsContainer extends Component {
 
   onBuy = product => {
     this.props.addProductToCart(product)
-    // this.setState({
-    //   buyedProducts: [...new Set([...this.state.buyedProducts, product])]
-    // })
   }
 
   onClear = () => {
