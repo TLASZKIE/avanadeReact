@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import * as Actions from './actions'
 import createSocketIoMiddleware from 'redux-socket.io'
 import io from 'socket.io-client'
+import createSagaMiddleware from 'redux-saga'
+import * as Actions from './actions'
+import { fetchSaga } from './sagas'
 
-let socket = io('ws://derpy.todr.me:8000')
-let socketIoMiddleware = createSocketIoMiddleware(socket, 'SERVER/')
+const socket = io('ws://derpy.todr.me:8000')
+const socketIoMiddleware = createSocketIoMiddleware(socket, 'SERVER/')
+const sagaMiddleware = createSagaMiddleware()
 
 const productsReducer = createReducer(
   {
@@ -51,22 +54,25 @@ const reducer = productsReducer
 
 export default applyMiddleware(
   // Redux-thunk: https://github.com/gaearon/redux-thunk
-  ({ dispatch, getState }) => {
-    return next => action => {
-      return typeof action === 'function'
-        ? action(dispatch, getState)
-        : next(action)
-    }
-  },
+  // ({ dispatch, getState }) => {
+  //   return next => action => {
+  //     return typeof action === 'function'
+  //       ? action(dispatch, getState)
+  //       : next(action)
+  //   }
+  // },
   store => next => action => {
     console.log(store.getState(), action)
     next(action)
   },
-  socketIoMiddleware
+  socketIoMiddleware,
+  sagaMiddleware
 )(createStore)(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+sagaMiddleware.run(fetchSaga)
 
 //8/ This helper function will allow us to create reducers.
 function createReducer(initialState, clazz) {

@@ -4,20 +4,20 @@ import * as Actions from './actions.js'
 const actionCreators = createActionCreators(Actions)
 
 // We add an asynchronous action
-actionCreators.fetchProducts = () => dispatch => {
-  dispatch(actionCreators.fetchProductsStarted())
+// actionCreators.fetchProducts = () => dispatch => {
+//   dispatch(actionCreators.fetchProductsStarted())
 
-  // fetch('data/products.json').then(
-  fetch('http://derpy.todr.me:8000/api/products').then(
-    products =>
-      products
-        .json()
-        .then(products =>
-          dispatch(actionCreators.fetchProductsSuccess(products))
-        ),
-    err => dispatch(actionCreators.fetchProductsFailure(err))
-  )
-}
+//   // fetch('data/products.json').then(
+//   fetch('http://derpy.todr.me:8000/api/products').then(
+//     products =>
+//       products
+//         .json()
+//         .then(products =>
+//           dispatch(actionCreators.fetchProductsSuccess(products))
+//         ),
+//     err => dispatch(actionCreators.fetchProductsFailure(err))
+//   )
+// }
 
 // actionCreators.addNewProduct = product => dispatch => {
 //   const body = JSON.stringify(product)
@@ -43,11 +43,6 @@ actionCreators.removeProduct = id => dispatch => {
 
   fetch('http://derpy.todr.me:8000/api/products/' + id, {
     method: 'delete'
-    // headers: {
-    //   Accept: 'application/json, text/plain, */*',
-    //   'Content-Type': 'application/json'
-    // },
-    // body: body
   })
     .then(res => res.json())
     .then(res => console.log(res))
